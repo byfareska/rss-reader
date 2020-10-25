@@ -2,6 +2,7 @@
 
 namespace App\Util;
 
+use samejack\PHP\ArgvParser;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\NullAdapter;
@@ -10,6 +11,8 @@ final class DependencyInjection
 {
     private ?AdapterInterface $cacheAdapter = null;
     private ?Config $config = null;
+    private ?ArgvParser $argvParser = null;
+    private ?Router $router = null;
 
     /**
      * Returns cache adapter
@@ -40,4 +43,19 @@ final class DependencyInjection
         return $this->config;
     }
 
+    public function getArgvParser(): ArgvParser
+    {
+        if ($this->argvParser === null)
+            $this->argvParser = new ArgvParser();
+
+        return $this->argvParser;
+    }
+
+    public function getRouter(): Router
+    {
+        if ($this->router === null)
+            $this->router = new Router($this);
+
+        return $this->router;
+    }
 }

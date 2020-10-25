@@ -1,0 +1,4 @@
+feeds:
+  national_geographic:
+    name: "National geographic"
+    url: https://blog.nationalgeographic.org/rss

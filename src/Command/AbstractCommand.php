@@ -2,16 +2,20 @@
 
 namespace App\Command;
 
+use App\InputOutput\Request;
+use App\InputOutput\Response;
 use App\Util\DependencyInjection;
 
 abstract class AbstractCommand
 {
-    public const EXIT_CODE_OK = 0;
-
     protected DependencyInjection $di;
+    protected Request $request;
+    protected Response $response;
 
-    public function __construct(DependencyInjection $di)
+    public function __construct(DependencyInjection $di, Request $request)
     {
         $this->di = $di;
+        $this->request = $request;
+        $this->response = new Response();
     }
 }

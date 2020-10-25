@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\App\Util;
+namespace Tests\Util;
 
 use App\Util\Config;
 use App\Util\DependencyInjection;

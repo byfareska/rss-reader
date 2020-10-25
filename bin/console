@@ -1,6 +1,13 @@
 #!/usr/bin/env php
 <?php
 
+use App\InputOutput\Response;
+
 require __DIR__ . "/../vendor/autoload.php";
 
-return (new App\App($argv))->run();
+try {
+    return (new App\App($argv))->run();
+} catch (Exception $e) {
+    echo $e->getMessage();
+    return Response::EXIT_CODE_ERROR;
+}

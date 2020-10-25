@@ -2,4 +2,5 @@
 
 use Symfony\Component\Dotenv\Dotenv;
 
-(new Dotenv())->loadEnv(__DIR__ . '/../.env');
+$dotenv = new Dotenv();
+$dotenv->loadEnv(__DIR__ . '/../.env');

@@ -2,19 +2,21 @@
 
 namespace App\Command;
 
+use App\InputOutput\Response;
+
 final class Index extends AbstractCommand
 {
     /**
      * Lists available commands
-     * @return int
+     * @return Response
      */
-    public function index(): int
+    public function index(): Response
     {
-        echo "Available commands:\n";
+        $this->response->say("Available commands:");
 
         foreach ($this->di->getConfig()->get('commands') as $cmd)
-            echo "{$cmd['path']} - {$cmd['description']}\n";
+            $this->response->say("{$cmd['path']} - {$cmd['description']}");
 
-        return self::EXIT_CODE_OK;
+        return $this->response;
     }
 }

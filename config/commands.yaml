@@ -1,0 +1,10 @@
+default_command: help
+commands:
+  help:
+    path: help
+    controller: App\Command\Index::index
+    description: Displays command list
+  fetch_rss:
+    path: fetch-rss
+    controller: App\Command\FetchRss::index
+    description: Shows latest RSS feed items

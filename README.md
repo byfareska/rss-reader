@@ -19,7 +19,7 @@ Usage
 -----
 
 ``` bash
-./bin/console
+./bin/console fetch-rss --feed="national geographic" --limit=3
 
 ```
 

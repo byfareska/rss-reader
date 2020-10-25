@@ -5,7 +5,7 @@ namespace App\Command;
 use App\Feed\Feed;
 use App\InputOutput\Response;
 
-class FetchRss extends AbstractCommand
+final class FetchRss extends AbstractCommand
 {
     public function index(): Response
     {

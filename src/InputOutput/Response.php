@@ -2,7 +2,7 @@
 
 namespace App\InputOutput;
 
-class Response
+final class Response
 {
     public const EXIT_CODE_OK = 0;
     public const EXIT_CODE_ERROR = 1;

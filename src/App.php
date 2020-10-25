@@ -5,7 +5,7 @@ namespace App;
 use App\InputOutput\Request;
 use App\Util\DependencyInjection;
 
-class App
+final class App
 {
     private DependencyInjection $di;
     private Request $request;
@@ -29,7 +29,7 @@ class App
         return (new $class($this->di, $this->request))->$method()->getExitCode();
     }
 
-    private function bootstrap()
+    private function bootstrap(): void
     {
         require __DIR__ . "/bootstrap.php";
     }

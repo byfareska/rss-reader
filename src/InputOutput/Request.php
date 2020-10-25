@@ -4,7 +4,7 @@ namespace App\InputOutput;
 
 use App\Util\DependencyInjection;
 
-class Request
+final class Request
 {
     private DependencyInjection $di;
     private string $class;

@@ -2,7 +2,7 @@
 
 namespace App\Util;
 
-class Router
+final class Router
 {
     private DependencyInjection $di;
 

@@ -2,3 +2,6 @@ feeds:
   national_geographic:
     name: "National geographic"
     url: https://blog.nationalgeographic.org/rss
+  nasa_news:
+    name: "NASA news"
+    url: https://www.nasa.gov/rss/dyn/breaking_news.rss

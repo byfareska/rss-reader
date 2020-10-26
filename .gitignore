@@ -8,3 +8,4 @@ var
 .env
 .env.*
 .phpunit.result.cache
+output

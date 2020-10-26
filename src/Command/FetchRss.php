@@ -2,6 +2,9 @@
 
 namespace App\Command;
 
+use App\Export\Export\ExportFeed;
+use App\Export\SaveToFile;
+use App\Export\Writer\CsvWriter;
 use App\Feed\Feed;
 use App\InputOutput\Response;
 
@@ -10,7 +13,6 @@ final class FetchRss extends AbstractCommand
     public function index(): Response
     {
         $feedName = @$this->request->getArgs()['feed'];
-        $limit = @$this->request->getArgs()['limit'] ?: 5;
 
         if ($feedName === null) {
             return $this->response
@@ -26,15 +28,16 @@ final class FetchRss extends AbstractCommand
                 ->say("Can't find `{$feedName}` feed.");
         }
 
-        $this->response->say("Latest news from {$feedName}:");
+        $export = new ExportFeed($feed);
+        $csv = $export->export(new CsvWriter());
+        $save = new SaveToFile($this->di, $csv, "csv");
 
-        foreach ($feed->getFeed() as $i => $item) {
-            if ($i >= $limit)
-                break;
-
-            $this->response->say("{$item->getTitle()} - {$item->getLink()}");
+        if ($save->save()) {
+            $this->response->say("Saved as {$save->getPath()}");
+        } else {
+            $this->response->say("Failed to save to file.");
+            $this->response->setExitCode(Response::EXIT_CODE_ERROR);
         }
-
 
         return $this->response;
     }

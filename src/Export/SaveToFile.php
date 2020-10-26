@@ -34,6 +34,9 @@ class SaveToFile
         return $this->extension;
     }
 
+    /**
+     * @return string File name without extension
+     */
     public function getFileName(): string
     {
         return $this->fileName;

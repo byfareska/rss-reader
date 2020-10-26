@@ -16,8 +16,7 @@ class CsvWriter implements WriterInterface
     }
 
     /**
-     * Returns temporary file name with result
-     * @return string
+     * @return string Returns temporary file name with result
      */
     private function saveToTmpFile(): string
     {
